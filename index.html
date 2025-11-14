@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -535,11 +534,14 @@
             to get your message on the board.
           </p>
 
-          <!-- Email goes directly to digitaladsrr@gmail.com -->
+          <!-- FormSubmit sends to your email and redirects to thank-you page -->
           <form action="https://formsubmit.co/digitaladsrr@gmail.com" method="POST">
+            <!-- FormSubmit settings -->
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_subject" value="New Sol Oeste Media billboard inquiry">
+            <!-- Change YOURUSERNAME below to your actual GitHub username -->
+            <input type="hidden" name="_next" value="https://soloestemedia.github.io/billboard-site/thank-you.html">
 
             <div class="field-row">
               <div>
@@ -566,3 +568,62 @@
             <div class="field-row">
               <div>
                 <label for="timing">When are you hoping to start?</label>
+                <select id="timing" name="Preferred Start">
+                  <option>As soon as we can get on the board</option>
+                  <option>Within the next 30 days</option>
+                  <option>Within 2–3 months</option>
+                  <option>Just exploring for now</option>
+                </select>
+              </div>
+              <div>
+                <label for="budget">Rough monthly budget</label>
+                <select id="budget" name="Budget">
+                  <option>Not sure yet</option>
+                  <option>Under $1,000</option>
+                  <option>$1,000–$2,500</option>
+                  <option>$2,500–$5,000</option>
+                  <option>$5,000+</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message">What should your ad help you do?</label>
+              <textarea
+                id="message"
+                name="Message"
+                placeholder="Tell us about your business, what you’d like people to do (call, visit, order, etc.), and any dates or promos."
+              ></textarea>
+            </div>
+
+            <div class="helper">
+              Prefer to talk instead? Call or text us at <strong>505.896.9032</strong>.
+            </div>
+
+            <div class="submit-row">
+              <button type="submit" class="btn-primary">Send my info</button>
+              <small>We’ll usually get back to you within one business day.</small>
+            </div>
+
+            <div class="privacy">
+              We only use your details to follow up about advertising on the Sol Oeste Media
+              digital billboard. No spam and we don’t sell your info. Ever.
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Sol Oeste Media – Digital Billboard on Unser Blvd NE, just north of Northern Blvd NE.
+      All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Simple script to keep the year current
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
