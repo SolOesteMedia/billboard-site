@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -424,4 +423,142 @@
       }
 
       .hero-cta {
-        text
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 16px 12px 28px;
+      }
+
+      .hero,
+      .contact {
+        padding: 16px 14px 14px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <div class="brand-logo">SE</div>
+        <div class="brand-text">
+          <strong>Sol Oeste Media</strong>
+          <span>Digital Billboard Advertising</span>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div>Questions about the board?</div>
+        <div><strong>505.896.9032</strong></div>
+        <div class="pill">
+          <div class="pill-dot"></div>
+          <span>Now booking upcoming ad slots</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT: Billboard info -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="badge-row">
+            <div class="pill">
+              <div class="pill-dot"></div>
+              <span>Unser Blvd NE • just north of Northern Blvd NE</span>
+            </div>
+            <div class="metric-chip">
+              <span>High-visibility</span>
+              <span>digital billboard location</span>
+            </div>
+          </div>
+
+          <h1>
+            Get your business in front of
+            <span>real people on Unser Blvd.</span>
+          </h1>
+
+          <p class="subtitle">
+            Sol Oeste Media’s high-visibility digital billboard sits on Unser Blvd NE,
+            just north of Northern Blvd NE. If you want more eyes on your business,
+            this is where they’re looking.
+          </p>
+
+          <div class="stats-grid">
+            <div class="stat">
+              <strong>Digital LED display</strong>
+              <span>Bright, full-color creative day & night</span>
+            </div>
+            <div class="stat">
+              <strong>Rotating ad slots</strong>
+              <span>Your message plays multiple times every hour</span>
+            </div>
+            <div class="stat">
+              <strong>Flexible options</strong>
+              <span>Short-term promos or ongoing brand presence</span>
+            </div>
+          </div>
+
+          <div class="hero-footer">
+            <div>
+              <strong style="font-size:12px;">Perfect if you want to be seen by:</strong>
+              <ul>
+                <li>Local customers driving Unser and Northern</li>
+                <li>People searching for new places to shop, eat, or call</li>
+                <li>Anyone you want to remind that you exist every single day</li>
+              </ul>
+            </div>
+            <div class="hero-cta">
+              <a href="#contact" class="btn-primary">Reserve your ad slot now</a>
+              <br />
+              <a href="tel:5058969032" class="btn-outline">Call or text 505.896.9032</a>
+              <div style="font-size:10px;color:#9ca3af;margin-top:4px;">
+                We’ll walk you through options, timing, and pricing — no pressure.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Contact form -->
+      <section class="contact" id="contact" aria-label="Contact form">
+        <div class="contact-inner">
+          <h2>Tell us what you’d like to promote</h2>
+          <p>
+            Share a few details and we’ll follow up with availability, pricing, and a simple plan
+            to get your message on the board.
+          </p>
+
+          <!-- Email goes directly to digitaladsrr@gmail.com -->
+          <form action="mailto:digitaladsrr@gmail.com" method="POST" enctype="text/plain">
+            <div class="field-row">
+              <div>
+                <label for="name">Your name *</label>
+                <input id="name" name="Name" type="text" required />
+              </div>
+              <div>
+                <label for="business">Business name</label>
+                <input id="business" name="Business" type="text" />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div>
+                <label for="email">Email *</label>
+                <input id="email" name="Email" type="email" required />
+              </div>
+              <div>
+                <label for="phone">Phone (call or text) *</label>
+                <input id="phone" name="Phone" type="tel" required />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div>
+                <label for="timing">When are you hoping to start?</label>
