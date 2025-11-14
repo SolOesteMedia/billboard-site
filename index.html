@@ -6,23 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="Promote your business on our high-visibility digital billboard. Flexible pricing, daily impressions, and simple booking."
+    content="Promote your business on our high-visibility digital billboard. Flexible pricing, simple booking, and real local reach."
   />
-
   <style>
     :root {
-      --bg: #050816;
-      --bg-light: #0f172a;
+      --bg: #020617;
+      --panel: #020617;
       --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.15);
+      --accent-soft: rgba(34, 197, 94, 0.1);
       --text: #e5e7eb;
       --muted: #9ca3af;
-      --border: #1f2937;
-      --error: #ef4444;
+      --border: #1e293b;
       --radius-xl: 1.5rem;
       --radius-lg: 1rem;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.7);
-      --shadow-chip: 0 10px 25px rgba(15, 23, 42, 0.9);
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.8);
     }
 
     * {
@@ -32,15 +29,18 @@
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, #111827 0, #020617 40%, #000 100%);
       color: var(--text);
       min-height: 100vh;
     }
 
+    a {
+      color: inherit;
+    }
+
     .page {
-      max-width: 1080px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 24px 16px 40px;
     }
@@ -53,61 +53,57 @@
       margin-bottom: 24px;
     }
 
-    .logo-wrap {
+    .brand {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    .logo-mark {
-      width: 38px;
-      height: 38px;
+    .brand-logo {
+      width: 40px;
+      height: 40px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #22c55e, #22c55e 40%, #0f172a 100%);
+      background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a 40%, #0f172a 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow-chip);
-      border: 1px solid rgba(15, 23, 42, 0.9);
-      font-size: 20px;
       font-weight: 700;
+      font-size: 20px;
       color: #e5ffe9;
+      box-shadow: 0 14px 30px rgba(34, 197, 94, 0.6);
     }
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    .brand-text strong {
+      font-size: 16px;
     }
 
-    .logo-text strong {
-      font-size: 15px;
-    }
-
-    .logo-text span {
+    .brand-text span {
+      display: block;
       font-size: 11px;
       color: var(--muted);
     }
 
-    .header-contact {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      font-size: 11px;
-      gap: 3px;
+    .header-right {
+      text-align: right;
+      font-size: 12px;
       color: var(--muted);
+    }
+
+    .header-right strong {
+      font-size: 14px;
+      color: var(--text);
     }
 
     .pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      padding: 4px 10px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(15, 23, 42, 0.9);
-      padding: 4px 10px;
+      background: rgba(15, 23, 42, 0.95);
       font-size: 11px;
-      color: var(--muted);
+      margin-top: 4px;
     }
 
     .pill-dot {
@@ -115,219 +111,227 @@
       height: 8px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 14px rgba(34, 197, 94, 0.8);
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
     }
 
     main {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 26px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
     }
 
-    /* Left column (hero) */
+    /* Hero / info card */
 
-    .hero-card {
-      background: radial-gradient(circle at top left, #1f2937, #020617);
+    .hero {
+      background: linear-gradient(135deg, #020617, #020617 40%, #020617 100%);
       border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
       padding: 20px 20px 18px;
-      border: 1px solid rgba(31, 41, 55, 0.8);
-      box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow);
     }
 
-    .hero-badge-row {
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.2), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(34, 197, 94, 0.25), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       gap: 8px;
     }
 
-    .hero-badge-row .pill {
-      background: rgba(15, 23, 42, 0.95);
-    }
-
-    .hero-metric-chip {
-      border-radius: 999px;
-      padding: 5px 10px;
+    .metric-chip {
       font-size: 11px;
-      background: linear-gradient(to right, rgba(34, 197, 94, 0.2), transparent);
-      border: 1px solid rgba(34, 197, 94, 0.4);
+      border-radius: 999px;
+      padding: 4px 9px;
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      background: var(--accent-soft);
+      color: #bbf7d0;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
-    .hero-metric-chip span:first-child {
-      font-size: 13px;
+    .metric-chip span:first-child {
       font-weight: 600;
-      color: #bbf7d0;
+      font-size: 13px;
     }
 
-    .hero-title {
+    h1 {
       font-size: 26px;
       line-height: 1.2;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .hero-title span {
+    h1 span {
       color: #bbf7d0;
     }
 
-    .hero-subtitle {
+    .subtitle {
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 16px;
-      max-width: 360px;
+      margin-bottom: 14px;
+      max-width: 400px;
     }
 
-    .hero-grid {
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    .hero-stat {
-      border-radius: 12px;
+    .stat {
+      border-radius: 14px;
       border: 1px solid rgba(31, 41, 55, 0.8);
       background: rgba(15, 23, 42, 0.95);
       padding: 8px 9px;
       font-size: 11px;
     }
 
-    .hero-stat strong {
+    .stat strong {
       display: block;
       font-size: 14px;
       margin-bottom: 2px;
     }
 
-    .hero-stat span {
+    .stat span {
       color: var(--muted);
     }
 
-    .hero-cta-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+    .hero-footer {
+      font-size: 11px;
+      color: var(--muted);
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
       gap: 12px;
+      align-items: center;
     }
 
-    .hero-cta-buttons {
-      display: flex;
-      gap: 10px;
+    .hero-footer ul {
+      list-style: none;
+      display: grid;
+      gap: 3px;
+    }
+
+    .hero-footer li::before {
+      content: "•";
+      margin-right: 4px;
+      color: var(--accent);
+    }
+
+    .hero-cta {
+      text-align: right;
     }
 
     .btn-primary,
-    .btn-ghost {
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
       border-radius: 999px;
-      padding: 8px 18px;
       font-size: 13px;
       border: 1px solid transparent;
       cursor: pointer;
-      transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease,
-        background 0.14s ease;
+      text-decoration: none;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+      white-space: nowrap;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, #22c55e, #16a34a);
       color: #022c22;
       font-weight: 600;
-      box-shadow: 0 15px 40px rgba(34, 197, 94, 0.4);
+      box-shadow: 0 14px 32px rgba(34, 197, 94, 0.45);
       border-color: rgba(22, 163, 74, 0.9);
+      margin-bottom: 4px;
     }
 
     .btn-primary:hover {
       transform: translateY(-1px);
-      box-shadow: 0 20px 45px rgba(34, 197, 94, 0.55);
+      box-shadow: 0 18px 40px rgba(34, 197, 94, 0.6);
     }
 
-    .btn-ghost {
-      background: rgba(15, 23, 42, 0.9);
-      border-color: rgba(75, 85, 99, 0.8);
-      color: var(--muted);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(15, 23, 42, 1);
+    .btn-outline {
       border-color: rgba(148, 163, 184, 0.8);
-    }
-
-    .hero-mini-note {
-      font-size: 11px;
+      background: rgba(15, 23, 42, 0.9);
       color: var(--muted);
-      max-width: 170px;
-      text-align: right;
+      font-size: 12px;
     }
 
-    .hero-mini-note span {
-      color: #bbf7d0;
-      font-weight: 600;
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: rgba(226, 232, 240, 0.9);
     }
 
-    .hero-glow {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.32), transparent 55%),
-        radial-gradient(circle at 90% 0%, rgba(34, 197, 94, 0.36), transparent 55%);
-      mix-blend-mode: screen;
-      opacity: 0.75;
-    }
+    /* Contact form card */
 
-    .hero-border-highlight {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      border: 1px solid transparent;
-      border-image: linear-gradient(120deg, rgba(34, 197, 94, 0.4), transparent) 1;
-      opacity: 0.4;
-      pointer-events: none;
-    }
-
-    /* Right column (contact) */
-
-    .contact-card {
-      background: radial-gradient(circle at top, #020617, #020617 50%, #000 100%);
+    .contact {
+      background: var(--panel);
       border-radius: var(--radius-xl);
-      border: 1px solid rgba(30, 64, 175, 0.4);
-      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(30, 64, 175, 0.6);
       padding: 18px 18px 16px;
+      box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
     }
 
-    .contact-title {
-      font-size: 18px;
-      margin-bottom: 4px;
+    .contact::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.2), transparent 55%),
+        radial-gradient(circle at 100% 50%, rgba(59, 130, 246, 0.2), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
+      pointer-events: none;
     }
 
-    .contact-subtitle {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-
-    form {
-      display: grid;
-      gap: 10px;
+    .contact-inner {
       position: relative;
       z-index: 1;
     }
 
-    label {
-      font-size: 12px;
-      display: block;
+    .contact h2 {
+      font-size: 18px;
       margin-bottom: 4px;
-      color: #e5e7eb;
     }
 
-    .field-row {
+    .contact p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    form {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 8px;
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 3px;
     }
 
     input,
@@ -354,18 +358,24 @@
     input:focus,
     textarea:focus,
     select:focus {
-      border-color: rgba(34, 197, 94, 0.7);
-      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.5);
+      border-color: rgba(34, 197, 94, 0.8);
+      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.4);
       background: rgba(15, 23, 42, 1);
     }
 
-    .helper {
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 6px;
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
     }
 
-    .privacy-note {
+    .helper {
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .privacy {
       font-size: 10px;
       color: var(--muted);
       margin-top: 4px;
@@ -374,78 +384,15 @@
 
     .submit-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 8px;
       margin-top: 4px;
     }
 
     .submit-row small {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .contact-glow {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.25), transparent 60%),
-        radial-gradient(circle at 100% 40%, rgba(59, 130, 246, 0.18), transparent 55%);
-      mix-blend-mode: screen;
-      opacity: 0.9;
-    }
-
-    /* Info section under cards */
-
-    .info-row {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
-      gap: 20px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .info-row h3 {
-      font-size: 12px;
-      margin-bottom: 6px;
-      color: #e5e7eb;
-    }
-
-    .info-row ul {
-      list-style: none;
-      display: grid;
-      gap: 3px;
-    }
-
-    .info-row li::before {
-      content: "•";
-      margin-right: 5px;
-      color: #22c55e;
-    }
-
-    .map-box {
-      border-radius: var(--radius-lg);
-      border: 1px dashed rgba(75, 85, 99, 0.8);
-      padding: 10px;
-      text-align: left;
-      background: rgba(15, 23, 42, 0.9);
-    }
-
-    .map-box strong {
-      display: block;
-      margin-bottom: 4px;
-      color: #e5e7eb;
-    }
-
-    .map-box span {
-      display: block;
-      margin-bottom: 2px;
-    }
-
-    .map-box small {
       font-size: 10px;
+      color: var(--muted);
     }
 
     footer {
@@ -454,17 +401,6 @@
       color: var(--muted);
       text-align: center;
     }
-
-    footer a {
-      color: #a5b4fc;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsive */
 
     @media (max-width: 800px) {
       main {
@@ -476,22 +412,17 @@
         align-items: flex-start;
       }
 
-      .header-contact {
-        align-items: flex-start;
-      }
-
-      .hero-cta-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .hero-mini-note {
+      .header-right {
         text-align: left;
-        max-width: none;
       }
 
-      .info-row {
+      .hero-footer {
         grid-template-columns: minmax(0, 1fr);
+        text-align: left;
+      }
+
+      .hero-cta {
+        text-align: left;
       }
     }
 
@@ -500,28 +431,31 @@
         padding: 16px 12px 28px;
       }
 
-      .hero-card,
-      .contact-card {
+      .hero,
+      .contact {
         padding: 16px 14px 14px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
   </style>
 </head>
 <body>
   <div class="page">
-    <!-- Top bar -->
     <header>
-      <div class="logo-wrap">
-        <div class="logo-mark">DB</div>
-        <div class="logo-text">
-          <strong>YOUR COMPANY / LOCATION</strong>
+      <div class="brand">
+        <div class="brand-logo">DB</div>
+        <div class="brand-text">
+          <strong>YOUR COMPANY NAME</strong>
           <span>Digital Billboard Advertising</span>
         </div>
       </div>
 
-      <div class="header-contact">
-        <span>Questions? Call or text:</span>
-        <div><strong>YOUR PHONE NUMBER</strong></div>
+      <div class="header-right">
+        <div>Call or text with questions:</div>
+        <div><strong>(555) 555-5555</strong></div>
         <div class="pill">
           <div class="pill-dot"></div>
           <span>Now booking next month’s slots</span>
@@ -529,53 +463,153 @@
       </div>
     </header>
 
-    <!-- Main content -->
     <main>
-      <!-- Left: hero & stats -->
-      <section class="hero-card" aria-label="Billboard overview">
-        <div class="hero-glow"></div>
-        <div class="hero-border-highlight"></div>
-
-        <div class="hero-badge-row">
-          <div class="pill">
-            <div class="pill-dot"></div>
-            <span>YOUR CITY • HIGH-TRAFFIC DIGITAL BOARD</span>
+      <!-- LEFT: Billboard info -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="badge-row">
+            <div class="pill">
+              <div class="pill-dot"></div>
+              <span>MAJOR INTERSECTION • YOUR CITY</span>
+            </div>
+            <div class="metric-chip">
+              <span>+25k</span>
+              <span>estimated impressions / day</span>
+            </div>
           </div>
 
-          <div class="hero-metric-chip">
-            <span>~YOUR#</span>
-            <span>impressions per day</span>
+          <h1>
+            Put your business on a
+            <span>high-visibility digital billboard</span>
+          </h1>
+
+          <p class="subtitle">
+            Located at <strong>Your highway / main road location here</strong>. Reach commuters and locals with bright, full-color digital ads that run all day.
+          </p>
+
+          <div class="stats-grid">
+            <div class="stat">
+              <strong>14' × 48'</strong>
+              <span>Digital LED display size</span>
+            </div>
+            <div class="stat">
+              <strong>8–10 sec</strong>
+              <span>Typical ad duration per rotation</span>
+            </div>
+            <div class="stat">
+              <strong>From $XXX/mo</strong>
+              <span>Flexible packages & terms</span>
+            </div>
+          </div>
+
+          <div class="hero-footer">
+            <div>
+              <strong style="font-size:12px;">Ideal for:</strong>
+              <ul>
+                <li>Local businesses wanting more calls & foot traffic</li>
+                <li>Grand openings, events, and limited-time promos</li>
+                <li>Service businesses (contractors, real estate, medical, etc.)</li>
+              </ul>
+            </div>
+            <div class="hero-cta">
+              <a href="#contact" class="btn-primary">Check availability & pricing</a>
+              <br />
+              <a href="tel:5555555555" class="btn-outline">Call or text now</a>
+              <div style="font-size:10px;color:#9ca3af;margin-top:4px;">
+                No obligation – we’ll simply share options and pricing.
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <h1 class="hero-title">
-          Put your brand on a <span>large-format digital billboard</span> seen every day.
-        </h1>
+      <!-- RIGHT: Contact form -->
+      <section class="contact" id="contact" aria-label="Contact form">
+        <div class="contact-inner">
+          <h2>Tell us about your ad</h2>
+          <p>Fill this out and we’ll get back to you with open slots, pricing, and simple next steps.</p>
 
-        <p class="hero-subtitle">
-          Located at <strong>YOUR MAJOR INTERSECTION / HIGHWAY</strong>. Reach commuters, locals,
-          and visitors with bright, dynamic digital ads that stand out day and night.
-        </p>
+          <!-- This uses mailto: to open the visitor’s email program and send you the info -->
+          <form action="mailto:youremail@example.com" method="POST" enctype="text/plain">
+            <div class="field-row">
+              <div>
+                <label for="name">Your name *</label>
+                <input id="name" name="Name" type="text" required />
+              </div>
+              <div>
+                <label for="business">Business name</label>
+                <input id="business" name="Business" type="text" />
+              </div>
+            </div>
 
-        <div class="hero-grid">
-          <article class="hero-stat">
-            <strong>YOUR# ft × YOUR# ft</strong>
-            <span>Digital LED display size</span>
-          </article>
-          <article class="hero-stat">
-            <strong>YOUR SPEED / TRAFFIC</strong>
-            <span>Average daily traffic (AADT)</span>
-          </article>
-          <article class="hero-stat">
-            <strong>YOUR RUNTIME</strong>
-            <span>Typical spot: 8–10 sec / rotation</span>
-          </article>
+            <div class="field-row">
+              <div>
+                <label for="email">Email *</label>
+                <input id="email" name="Email" type="email" required />
+              </div>
+              <div>
+                <label for="phone">Phone (call or text) *</label>
+                <input id="phone" name="Phone" type="tel" required />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div>
+                <label for="timing">When do you want to start?</label>
+                <select id="timing" name="Preferred Start">
+                  <option>As soon as possible</option>
+                  <option>Within 30 days</option>
+                  <option>Within 2–3 months</option>
+                  <option>Just exploring options</option>
+                </select>
+              </div>
+              <div>
+                <label for="budget">Approx. monthly budget</label>
+                <select id="budget" name="Budget">
+                  <option>Not sure yet</option>
+                  <option>Under $1,000</option>
+                  <option>$1,000–$2,500</option>
+                  <option>$2,500–$5,000</option>
+                  <option>$5,000+</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="message">What would you like to promote?</label>
+              <textarea
+                id="message"
+                name="Message"
+                placeholder="Tell us about your business, your offer, and any dates we should know about."
+              ></textarea>
+            </div>
+
+            <div class="helper">
+              Prefer to talk instead? Call or text us at (555) 555-5555.
+            </div>
+
+            <div class="submit-row">
+              <button type="submit" class="btn-primary">Send message</button>
+              <small>We usually respond within 1 business day.</small>
+            </div>
+
+            <div class="privacy">
+              We’ll only use your info to follow up about advertising on this billboard. No spam, no sharing your details.
+            </div>
+          </form>
         </div>
+      </section>
+    </main>
 
-        <div class="hero-cta-row">
-          <div class="hero-cta-buttons">
-            <button type="button" class="btn-primary" onclick="scrollToForm()">
-              Get availability & pricing
-            </button>
-            <a href="tel:YOUR_PHONE_NUMBER" class="btn-ghost" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
-              Call
+    <footer>
+      © <span id="year"></span> YOUR COMPANY NAME – Digital Billboard Advertising. All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // Simple script to keep the year current
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
